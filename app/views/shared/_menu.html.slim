@@ -1,4 +1,11 @@
-- if user_signed_in?
-  =link_to "Log Out", destroy_user_session_path, method: :delete
-- else
-  =link_to "Log In", new_user_session_path
+ul class="list-reset flex"
+  li class="mr-6"=link_to "Home", root_path
+  - if user_signed_in?
+    li class="mr-6"
+      =link_to "Log Out", destroy_user_session_path, method: :delete
+  - else
+    li class="mr-6"
+      =link_to "Log In", new_user_session_path, class: ""
+    li class="mr-6"
+      a href="#" Testing
+
