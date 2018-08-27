@@ -93,4 +93,12 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Setup Exception Notification Email
+  config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[ #{Rails.application.class.parent_name} Exeception] ",
+    :sender_address => %{"notifier" <notifier@appname.com>},
+    :exception_recipients => [ENV['EXCEPTION_EMAIL']]
+  }
 end
