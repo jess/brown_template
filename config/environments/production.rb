@@ -101,4 +101,18 @@ Rails.application.configure do
     :sender_address => %{"notifier" <notifier@appname.com>},
     :exception_recipients => [ENV['EXCEPTION_EMAIL']]
   }
+
+  # Sendgrid smpt setup
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'heroku.com',
+    :enable_starttls_auto => true
+  }
+  ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => ENV['domain_name'] }
+
 end
