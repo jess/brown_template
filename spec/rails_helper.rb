@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require "selenium/webdriver"
 require "capybara-screenshot/rspec"
+require "pundit/rspec"
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
